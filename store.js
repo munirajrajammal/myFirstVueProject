@@ -7,9 +7,9 @@ Vue.use(Vuex)
 Vue.use(axios)
 Vue.use(bootstrap)
 Vue.use(router)
-const namespaced = true
+// const namespaced = true
 export default new Vuex.Store({
-  namespaced,
+  // namespaced,
   state: {
     Reg: [],
     stateErrData: [],
@@ -17,7 +17,8 @@ export default new Vuex.Store({
     backendMsg: '',
     loginMsg: '',
     passMsg: '',
-    DataPassMsg: ''
+    DataPassMsg: '',
+    jwtMsg: ''
   },
   mutations: {
     inserted (state, payload) {
@@ -38,7 +39,7 @@ export default new Vuex.Store({
       state.backendMsg = payload
     },
     loginFormMsg (state, payload) {
-      console.log('the login form message ---- >>> ', payload)
+      console.log('the login form message payload ======******---- >>> ', payload)
       state.loginMsg = payload
     },
     PassWordMutation (state, payload) {
@@ -46,6 +47,9 @@ export default new Vuex.Store({
     },
     rePassWordMutation (state, payload) {
       state.DataPassMsg = payload
+    },
+    jwtToken (state, payload) {
+      state.jwtMsg = payload
     }
   },
   getters: {
@@ -115,17 +119,18 @@ export default new Vuex.Store({
       console.log('the front end router data============', routerData)
       axios.post('http://localhost:4000/loginFormData', data)
         .then(indataLogin => {
-          console.log('the data login back end ', indataLogin.data.data)
-          console.log('the token of jwt=======', indataLogin.data.data.JwtToken)
+          console.log('the data login back end ===============', indataLogin.data.data)
+          // console.log('the token of jwt=======', indataLogin.data.data.JwtToken)
           loginMessage.loginMsg = indataLogin.data.data
           localStorage.setItem('userToken', indataLogin.data.data.JwtToken)
           if (indataLogin.data.data.success === 'Login Success') {
             routerData.push('/welcome')
           }
           commit('loginFormMsg', loginMessage.loginMsg)
+          console.log('========================', loginMessage.loginMsg)
         }).catch(err => {
-          console.log('the error data of back end ', err)
-          loginMessage.loginMsg = err
+          console.log('the error data of back end ;;;;;;;;;;;;;;;;;', err.data.data)
+          loginMessage.loginMsg = err.data.data
           commit('loginFormMsg', loginMessage.loginMsg)
         })
     },
@@ -136,12 +141,12 @@ export default new Vuex.Store({
       console.log('the front end data of forgot password', data)
       axios.post('http://localhost:4000/forgetPassForm', data)
         .then(passData => {
-          console.log('the back end data', passData.data.data)
+          console.log('the back end data==============', passData.data.data)
           passMess.passMsg = passData.data.data
           commit('PassWordMutation', passMess.passMsg)
         }).catch(err => {
           passMess.passMsg = err
-          console.log('the back end err data', err)
+          console.log('the back end err data ;;;;;;;;;;;;;;;;', err)
           commit('PassWordMutation', passMess.passMsg)
         })
     },
@@ -162,10 +167,16 @@ export default new Vuex.Store({
         })
     },
     verificationData ({commit}, data) {
-      console.log('the front end data of verification/', data)
-      axios.post(`http://localhost:4000/verificationData/${data}`)
+      // console.log('the front end data of verification/', data.)
+      let config = {
+        headers: {
+          authorization: localStorage.getItem('userToken')
+        }
+      }
+      axios.get('http://localhost:4000/verificationData', config)
         .then(backendData => {
-          console.log(' ', backendData)
+          console.log(' jjjjjjjjjjjjjjjjjjjjjjj', backendData.data.msg)
+          commit('jwtToken', backendData.data.msg)
         }).catch(err => {
           console.log('', err)
         })

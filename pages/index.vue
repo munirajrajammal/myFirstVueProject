@@ -1,5 +1,6 @@
 <template>
-
+<div>
+  <button @click="loginbutton">login</button>
   <div class="formreg">
     <form @submit.prevent="insert">
       <h1>Register Form</h1>
@@ -70,6 +71,7 @@
 
     </form>
   </div>
+</div>
   <!-- <section class="container">
     <img src="~assets/img/logo.png" alt="Nuxt.js Logo" class="logo" />
     <h1 class="title">
@@ -105,6 +107,9 @@ export default {
     insert () {
       console.log(this.register)
       this.$store.dispatch('inserted', this.register)
+    },
+    loginbutton () {
+      this.$router.push('/login')
     }
   },
   computed: {
@@ -135,7 +140,11 @@ $Color: red;
 body {
   background-color: white;
 }
-div {
+div{
+  margin:  10px 10px;
+  font-size: 30px;
+}
+.formreg {
   display: flex;
   justify-content: center;
   font-size: 30px;

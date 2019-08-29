@@ -1,47 +1,51 @@
 <template>
   <div>
-    <form @submit.prevent="loginInsert">
-      <b-p> LOGIN FORM </b-p>
-      <br>
-      <br>
-      <b-label for>Email</b-label>
-      <b-input
-        id="email"
-        type="email"
-        v-model="loginRegister.email"
-        name="email"
-        placeholder="Enter email"
-        required
-      />
-      <br/>
-      <b-label for>Password</b-label>
-      <b-input
-        id="password"
-        type="password"
-        minlength="3"
-        maxlength="12"
-        v-model="loginRegister.password"
-        name="password"
-        placeholder="Enter password"
-        required
-      />
-      <br/>
+    <nav>
+        <button @click="registerForm">Create account</button>
+      </nav>
+    <div class="formLogin">
+      <form @submit.prevent="loginInsert">
+        <b-p> LOGIN FORM </b-p>
+        <br>
+        <br>
+        <b-label for>Email</b-label>
+        <b-input
+          id="email"
+          type="email"
+          v-model="loginRegister.email"
+          name="email"
+          placeholder="Enter email"
+          required
+        />
+        <br/>
+        <b-label for>Password</b-label>
+        <b-input
+          id="password"
+          type="password"
+          minlength="3"
+          maxlength="12"
+          v-model="loginRegister.password"
+          name="password"
+          placeholder="Enter password"
+          required
+        />
+        <br/>
+
+      
+        <b-toast id="example-toast" title="BootstrapVue" static no-auto-hide>
+          {{ $store.state.loginMsg.success }}
+        </b-toast>
 
 
-      <b-toast id="example-toast" title="BootstrapVue" static no-auto-hide>
-        {{ loginMsg }}
-      </b-toast>
-
-      <button id="butt"
-      @click="$bvToast.show('example-toast')"
-      name="login">
-        login
-      </button>
+        <button
+        @click="$bvToast.show('example-toast')"
+        >login</button>
 
 
 
-      <a href="http://localhost:3000/ForgotPass">forgot password</a>
-      </form>
+        <a href="http://localhost:3000/ForgotPass">forgot password</a>
+        </form>
+    </div>
   </div>
 </template>
 
@@ -62,34 +66,16 @@ export default {
   },
   methods: {
     loginInsert () {
-      console.log('the data of registerLogin ', this.loginRegister)
+      console.log('the data of registerLogin ========== ', this.loginRegister)
       this.$store.dispatch('loginForm', { data: this.loginRegister, routerData: this.$router })
-      // let messagedata = {
-      //   loginmessage: ''
-      // }
-      // axios.post('http://localhost:4000/loginFormData', { userData: this.loginRegister, Router: this.$router })
-      //   .then(indatass => {
-      //     console.log('the back end data =========', indatass.data.data)
-      //     messagedata.loginmessage = indatass.data.data.success
-      // localStorage.setItem('userToken', indatass.data.data.JwtToken)
-      // let retrievedObject = localStorage.getItem('userToken')
-      // console.log('mmmmmmmmmmmmmmm', retrievedObject)
-      // axios.interceptors.request.use((config) => {
-      //   let token = localStorage.getItem('userToken')
-      //   if (token) {
-      //     config.headers['Authorization'] = `Bearer ${token}`
-      //   }
-      //   return config
-      // })
-      // if (indatass.data.data.success === 'Login Success') {
-      //   this.$router.push('/welcome')
-      // }
-      // }).catch(err => {
-      //   console.log('the err data ========', err)
-      // })
+      console.log('--------- ****', this.$store.state.loginMsg.success)
+      // this.msgText = this.$store.state.loginMsg
+    },
+    registerForm () {
+      this.$router.push('/')
     },
     computed: {
-      ...mapState(['loginMsg'])
+      ...mapState({message: 'loginMsg'})
     }
   }
 }
@@ -100,7 +86,11 @@ export default {
 body {
   background-color: white;
 }
-div {
+div{
+  margin: 10px 10px;
+  font-size: 30px;
+}
+.formLogin{
   display: flex;
   justify-content: center;
   font-size: 30px;

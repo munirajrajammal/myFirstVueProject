@@ -20,13 +20,12 @@
       <b-toast id="example-toast" title="BootstrapVue" static no-auto-hide>
         {{ DataPassMsg }}
       </b-toast>
-
-      <button id="butt"
-      @click="$bvToast.show('example-toast')"
+      <!-- <button v-if="DataPassMsg === 'SuccessPassWordChange'">login</button> -->
+      <button id="butt" 
+      @click="loginData"
       name="login">
       login
       </button>
-
     </form>
   </div>
 </template>
@@ -52,6 +51,9 @@ import { mapState } from 'vuex'
         let data = { password: this.rePass.password, token: this.token }
         console.log('==>', data)
         this.$store.dispatch('repasswordstore', data)
+      },
+      loginData () {
+        this.$router.push('/login')
       }
     },
     mounted () {

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <menu-bar/> -->
     <nuxt/>
     <!-- <my-footer/> -->
     <!-- <my-form/> -->
@@ -9,11 +10,13 @@
 <script>
 // import MyFooter from '~/components/Footer.vue'
 // import MyForm from '~/components/Form1.vue'
+// import MenuBar from '~/components/menuBar.vue'
 
 export default {
   components: {
     // MyFooter,
     // MyForm
+    // MenuBar
   }
 }
 </script>
