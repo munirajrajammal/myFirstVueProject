@@ -1,5 +1,57 @@
 <template>
-  <div class="common">
+  <b-row class="d-flex justify-content-center">
+    <div class="col-8 d-flex justify-content-center firstMargin">
+      <div class="row d-flex justify-content-center">
+        <div class="col-10">
+          <div class="loginForm"> 
+            <form @submit.prevent="loginInsert">
+              <b-p> Login </b-p>
+              <br>
+              <br>
+              <b-input
+                id="email"
+                type="email"
+                v-model="loginRegister.email"
+                name="email"
+                placeholder="Enter email"
+                required
+              />
+              <br>
+              <b-input
+                id="password"
+                type="password"
+                minlength="3"
+                maxlength="12"
+                v-model="loginRegister.password"
+                name="password"
+                placeholder="Enter password"
+                required
+                />
+              <br/>
+              <b-toast id="example-toast" title="BootstrapVue" static no-auto-hide>
+                {{ $store.state.loginMsg.success }}
+              </b-toast>
+              
+              <button
+              class="rounded-pill btn btn-primary"
+              @click="$bvToast.show('example-toast')"
+              >login</button>
+              <br>
+              <a href="http://localhost:3000/ForgotPass">forgot your password</a>
+            </form>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="registerForm">
+            <b-p id="newAccount">Are you new account</b-p>
+            <br>
+            <b-button pill variant="primary" @click="registerForm">Create on Account</b-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </b-row>
+  <!-- <b-row class="common">
     <div class="firstdiv">
       <b-row class="d-flex justify-content-center firstRow">
         
@@ -47,7 +99,7 @@
         </div>     
       </b-row>
     </div>
-  </div>
+  </b-row> -->
 </template>
 
 <script>
@@ -83,50 +135,78 @@ export default {
 </script>
   
 <style  lang="scss" scoped>
-  $Color: rgb(120, 78, 199);
-body {
-  background-color: white;
-}
-.common {
-  background-color: aqua;
-  margin: 5% 15%;
-  display: flex;
-  justify-content: center;
-  .firstdiv {
-    // float: left;
-    // background-color: $Color;
-    // display: flex;
-    // align-items: center;
-    margin: 2% 10%;
+.firstMargin {
+  margin: 5% 0%;
+  .loginForm {
+    background-color: blue;
+    text-align: center;
+    line-height: 35px;
+    b-p {
+      font-size: 50px;
+    }
     input {
       border: none; 
       border-radius: 50px;
       width: 100%;
-      height: 40px;
-      }
-    .firstRow {
-      align-items: center;
-      background-color: purple;
-      b-p {
-        font-size: 50px;
-      }
-      button{
-        font-size: 18px;
-        text-transform: capitalize;
-      }
-      a{
-        font-size: 18px;
-      }
+      height: 50px;
     }
-    .secondRow {
-      margin: 0px 60px;
-      background-color: yellowgreen;
-      b-p{
-        font-size: 20px;
-      }
-    }   
+    button {
+      text-transform: capitalize;
+      font-size: larger;
+    }
+    a {
+      font-size: 20px;
+    }
+  }
+  .registerForm {
+    text-align: center;
   }
 }
+
+//   $Color: rgb(120, 78, 199);
+// body {
+//   background-color: white;
+// }
+// .common {
+//   background-color: aqua;
+//   margin: 5% 10%;
+//   display: flex;
+//   justify-content: center;
+//   .firstdiv {
+//     // float: left;
+//     // background-color: $Color;
+//     // display: flex;
+//     // align-items: center;
+//     margin: 2% 10%;
+//     input {
+//       border: none; 
+//       border-radius: 50px;
+//       width: 100%;
+//       height: 40px;
+//       }
+//     .firstRow {
+//       align-items: center;
+//       background-color: purple;
+//       b-p {
+//         font-size: 50px;
+//       }
+//       button{
+//         font-size: 18px;
+//         text-transform: capitalize;
+//       }
+//       a{
+//         font-size: 18px;
+//       }
+//     }
+//     .secondRow {
+//       margin: 0px 60px;
+//       background-color: yellowgreen;
+//       b-p{
+//         font-size: 20px;
+//       }
+//     }   
+//   }
+// }
 
 
 
