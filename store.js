@@ -2,10 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import router from 'vue-router'
-import bootstrap from 'bootstrap-vue'
 Vue.use(Vuex)
 Vue.use(axios)
-Vue.use(bootstrap)
 Vue.use(router)
 // const namespaced = true
 export default new Vuex.Store({

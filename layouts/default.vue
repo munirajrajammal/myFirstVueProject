@@ -10,7 +10,7 @@
 <script>
 // import MyFooter from '~/components/Footer.vue'
 // import MyForm from '~/components/Form1.vue'
-// import MenuBar from '~/components/menuBar.vue'
+// import MenuBar from '~/components/Menu.vue'
 
 export default {
   components: {

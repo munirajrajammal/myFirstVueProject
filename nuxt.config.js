@@ -15,6 +15,12 @@ module.exports = {
     ]
   },
   /*
+  plugin global 
+  */
+  plugins: [
+    '@/plugins/bootstrap',
+  ],
+  /*
   ** Global CSS
   */
   css: ['~/assets/css/main.css'],

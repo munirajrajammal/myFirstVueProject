@@ -1,50 +1,51 @@
 <template>
-  <div>
-    <nav>
-        <button @click="registerForm">Create account</button>
-      </nav>
-    <div class="formLogin">
-      <form @submit.prevent="loginInsert">
-        <b-p> LOGIN FORM </b-p>
-        <br>
-        <br>
-        <b-label for>Email</b-label>
-        <b-input
-          id="email"
-          type="email"
-          v-model="loginRegister.email"
-          name="email"
-          placeholder="Enter email"
-          required
-        />
-        <br/>
-        <b-label for>Password</b-label>
-        <b-input
-          id="password"
-          type="password"
-          minlength="3"
-          maxlength="12"
-          v-model="loginRegister.password"
-          name="password"
-          placeholder="Enter password"
-          required
-        />
-        <br/>
-
-      
-        <b-toast id="example-toast" title="BootstrapVue" static no-auto-hide>
-          {{ $store.state.loginMsg.success }}
-        </b-toast>
-
-
-        <button
-        @click="$bvToast.show('example-toast')"
-        >login</button>
-
-
-
-        <a href="http://localhost:3000/ForgotPass">forgot password</a>
-        </form>
+  <div class="common">
+    <div class="firstdiv">
+      <b-row class="d-flex justify-content-center firstRow">
+        
+        <form @submit.prevent="loginInsert">
+            <b-p> Login </b-p>
+            <br>
+            <br>
+            <b-input
+              id="email"
+              type="email"
+              v-model="loginRegister.email"
+              name="email"
+              placeholder="Enter email"
+              required
+            />
+            <br>
+            <b-input
+              id="password"
+              type="password"
+              minlength="3"
+              maxlength="12"
+              v-model="loginRegister.password"
+              name="password"
+              placeholder="Enter password"
+              required
+              />
+            <br/>
+            <b-toast id="example-toast" title="BootstrapVue" static no-auto-hide>
+              {{ $store.state.loginMsg.success }}
+            </b-toast>
+            
+            <button
+            class="rounded-pill btn btn-primary"
+            @click="$bvToast.show('example-toast')"
+            >login</button>
+            <br>
+            <a href="http://localhost:3000/ForgotPass">forgot your password</a>
+          </form>
+      </b-row>
+      <b-row class="d-flex justify-content-center secondRow" >
+        <div>
+          <b-p id="newAccount">Are you new account</b-p>
+          <br>
+          <b-button pill variant="primary" @click="registerForm">Create on Account</b-button>
+        </div>     
+      </b-row>
     </div>
   </div>
 </template>
@@ -82,36 +83,78 @@ export default {
 </script>
   
 <style  lang="scss" scoped>
-  $Color: red;
+  $Color: rgb(120, 78, 199);
 body {
   background-color: white;
 }
-div{
-  margin: 10px 10px;
-  font-size: 30px;
-}
-.formLogin{
+.common {
+  background-color: aqua;
+  margin: 5% 15%;
   display: flex;
   justify-content: center;
-  font-size: 30px;
-  margin-top: 50px;
-  b-p{
-    font-size: 40px;
-    color: $Color;
-    font: bold;
-  }
-  b-label{
-    color: green;
-  }
-  button{
-    font-size: 20px;
-  }
-  a{
-    margin-left: 50px;
-    justify-content: end;
-    font-size: 20px;
-    color: blue;
+  .firstdiv {
+    // float: left;
+    // background-color: $Color;
+    // display: flex;
+    // align-items: center;
+    margin: 2% 10%;
+    input {
+      border: none; 
+      border-radius: 50px;
+      width: 100%;
+      height: 40px;
+      }
+    .firstRow {
+      align-items: center;
+      background-color: purple;
+      b-p {
+        font-size: 50px;
+      }
+      button{
+        font-size: 18px;
+        text-transform: capitalize;
+      }
+      a{
+        font-size: 18px;
+      }
+    }
+    .secondRow {
+      margin: 0px 60px;
+      background-color: yellowgreen;
+      b-p{
+        font-size: 20px;
+      }
+    }   
   }
 }
+
+
+
+
+
+
+
+// div{
+//   margin: 10px 10px;
+//   font-size: 30px;
+// }
+// .formLogin{
+//   display: flex;
+//   justify-content: center;
+//   font-size: 30px;
+//   margin-top: 50px;
+//   b-p{
+//     font-size: 40px;
+//     color: $Color;
+//     font: bold;
+//   }
+//   b-label{
+//     color: green;
+//   }
+//   b-input{
+//   }
+  
+  
+// }
 
 </style>
