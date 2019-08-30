@@ -1,5 +1,5 @@
 <template>
-  <b-row class="d-flex justify-content-center">
+  <b-row class="d-flex justify-content-center background">
     <div class="col-8 d-flex justify-content-center firstMargin">
       <div class="row d-flex justify-content-center">
         <div class="col-10">
@@ -7,8 +7,8 @@
             <form @submit.prevent="loginInsert">
               <b-p> Login </b-p>
               <br>
-              <br>
               <b-input
+                class="firstInput"
                 id="email"
                 type="email"
                 v-model="loginRegister.email"
@@ -43,7 +43,7 @@
         </div>
         <div class="col-8">
           <div class="registerForm">
-            <b-p id="newAccount">Are you new account</b-p>
+            <b-p id="newAccount">Are you new account here?</b-p>
             <br>
             <b-button pill variant="primary" @click="registerForm">Create on Account</b-button>
           </div>
@@ -135,31 +135,76 @@ export default {
 </script>
   
 <style  lang="scss" scoped>
-.firstMargin {
-  margin: 5% 0%;
-  .loginForm {
-    background-color: blue;
-    text-align: center;
-    line-height: 35px;
-    b-p {
-      font-size: 50px;
+.background {
+  margin: 0px;
+  height: 100vh;
+  font: initial;
+  .firstMargin {
+    font: initial;
+    margin: 6% 0%;
+    .loginForm {
+      border-radius: 20px;
+      margin: 0px 42px;
+      padding: 40px 75px;
+      background-color: white;
+      text-align: center;
+      line-height: 35px;
+      b-p {
+        font-size: 80px;
+        color: #9b9d9e;
+      }
+      .firstInput{
+          margin-top: 31px;
+      }
+      ::placeholder {
+        padding-left: 6px;
+      }
+      input {
+        outline: none;
+        border:solid 1px #ccc;
+        // border: none; 
+        border-radius: 50px;
+        width: 100%;
+        height: 50px;
+        font-size: 25px;
+      }
+      button {
+        margin-bottom: 25px;
+        text-transform: capitalize;
+        font-size: larger;
+        width: 100%;
+        font-size: 30px;
+        background: linear-gradient(90deg, #514cb2 50%  , #6f4eb3 100%);
+      }
+      a {
+        color: #007bff;
+        font-size: 30px;
+      }
     }
-    input {
-      border: none; 
-      border-radius: 50px;
-      width: 100%;
-      height: 50px;
+    .registerForm {
+      text-align: center;
+      margin: 0px 85px;
+      padding: 25px 60px 15px 60px;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      background: linear-gradient(90deg, #514cb2 50%  , #6f4eb3 100%);     
+      line-height: 35px;
+      b-p {
+        font-size: 30px;
+        color: #ffffff;
+      }
+      button {
+        color: #694db3;
+        font-size: 30px;
+        background-color: #ffffff !important;
+        margin-top: 30px;
+        margin-bottom: 25px;
+        text-transform: capitalize;
+        font-size: larger;
+        width: 100%;
+        font-size: 30px;
+      }
     }
-    button {
-      text-transform: capitalize;
-      font-size: larger;
-    }
-    a {
-      font-size: 20px;
-    }
-  }
-  .registerForm {
-    text-align: center;
   }
 }
 
