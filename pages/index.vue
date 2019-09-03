@@ -49,15 +49,12 @@
               />
               <br />
 
-              <b-toast id="example-toast" title="BootstrapVue" static no-auto-hide>
-                {{ msg }}
-              </b-toast>
-
               <button 
               class="rounded-pill btn btn-primary"
               @click="$bvToast.show('example-toast')"
               :disabled='register.password !== register.confirmPassword'
               >Submit</button>
+              <img v-if="msg" src="../assets/img/done.gif">
             </form>
           </div>
         </div>
@@ -114,7 +111,7 @@ export default {
   font: initial;
   .firstMargin {
     font: initial;
-    margin: 3.2% 0%;
+    margin: 3% 0%;
     .registerForm {
       border-radius: 20px;
       margin: 0px 42px;
@@ -131,6 +128,9 @@ export default {
       }
       ::placeholder{
         padding-left: 0px;
+      }
+      img {
+        width: 80px;
       }
       input {
         outline: none;
