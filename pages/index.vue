@@ -71,79 +71,6 @@
       </div>
     </div>
   </b-row>
-<!-- <div>
-  <button @click="loginbutton">login</button>
-  <div class="formreg">
-    <form @submit.prevent="insert">
-      <h1>Register Form</h1>
-      <label for>Name :</label>
-      <input id="name" 
-      type="text" 
-      v-model="register.name" 
-      name="name" 
-      placeholder="Enter name" 
-      required />
-      <br/>
-      <br/>
-
-
-      <label for>Email :</label>
-      <input
-        id="email"
-        type="email"
-        v-model="register.email"
-        name="email"
-        placeholder="Enter email"
-        required
-      />
-      <br/>
-      <br/>
-
-
-      <label for>Password :</label>
-      <input
-        id="password"
-        type="password"
-        minlength="3"
-        maxlength="12"
-        v-model="register.password"
-        name="password"
-        placeholder="Enter password"
-        required
-      />
-      <br />
-      <br />
-
-
-      <label for>Conform Password :</label>
-      <input
-        id="conformPassword"
-        type="password"
-        minlength="3"
-        maxlength="12"
-        v-model="register.confirmPassword"
-        name="conform password"
-        placeholder="Enter conform password"
-        required
-      />
-      <br />
-      <br />
-
-
-      <b-toast id="example-toast" title="BootstrapVue" static no-auto-hide>
-        {{ msg }}
-      </b-toast>
-
-
-      <button id="butt"
-      name="login" 
-      @click="$bvToast.show('example-toast')"
-      :disabled='register.password !== register.confirmPassword'
-      >Submit</button>
-
-    </form>
-  </div>
-</div> -->
 </template>
 
 <script>
@@ -178,19 +105,6 @@ export default {
     ...mapState(['msg'])
   }
 }
-// import axios from '~/plugins/axios'
-
-// export default {
-//   async asyncData () {
-//     let { data } = await axios.get('/api/users')
-//     return { users: data }
-//   },
-//   head () {
-//     return {
-//       title: 'Users'
-//     }
-//   }
-// }
 </script>
 
 <style lang="scss" scoped>
@@ -216,12 +130,12 @@ export default {
         color: #9b9d9e;
       }
       ::placeholder{
-        padding-left: 6px;
+        padding-left: 0px;
       }
       input {
         outline: none;
+        padding-left: 25px;
         border:solid 1px #ccc;
-        // border: none; 
         border-radius: 50px;
         width: 100%;
         height: 50px;
@@ -233,12 +147,9 @@ export default {
         font-size: larger;
         width: 100%;
         font-size: 30px;
-        background: linear-gradient(90deg, #514cb2 50%  , #6f4eb3 100%);
+        background-image: linear-gradient(to right, #e1010b, #dc4d00, #d47000, #c98d00, #bea603);
       }
-      a {
-        color: #007bff;
-        font-size: 30px;
-      }
+
     }
     .ontherForm {
       text-align: center;
@@ -246,14 +157,14 @@ export default {
       padding: 25px 60px 15px 60px;
       border-bottom-left-radius: 25px;
       border-bottom-right-radius: 25px;
-      background: linear-gradient(90deg, #514cb2 50%  , #6f4eb3 100%);     
+      background-image: linear-gradient(to right, #e1010b, #dc4d00, #d47000, #c98d00, #bea603);  
       line-height: 35px;
       b-p {
         font-size: 30px;
         color: #ffffff;
       }
       button {
-        color: #694db3;
+        color: #e23d25;
         font-size: 30px;
         background-color: #ffffff !important;
         margin-top: 30px;
@@ -266,54 +177,4 @@ export default {
     }
   }
 }
-
-// $Color: red;
-// body {
-//   background-color: white;
-// }
-// div{
-//   margin:  10px 10px;
-//   font-size: 30px;
-// }
-// .formreg {
-//   display: flex;
-//   justify-content: center;
-//   font-size: 30px;
-//   input {
-//     margin-left: 10px;
-//   }
-//   #name {
-//     margin-left: 190px;
-//   }
-//   #email {
-//     margin-left: 193px;
-//   }
-//   #password {
-//     margin-left: 137px;
-//   }
-//   h1 {
-//     color: $Color;
-//   }
-//   label {
-//     color: green;
-//   }
-//   button {
-//     height: 45px;
-//     width: 150px;
-//   }
-// }
-/* .title
-{
-  margin: 30px 0;
-}
-.users
-{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.user
-{
-  margin: 10px 0;
-} */
 </style>

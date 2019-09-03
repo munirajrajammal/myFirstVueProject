@@ -47,6 +47,7 @@ export default new Vuex.Store({
       state.DataPassMsg = payload
     },
     jwtToken (state, payload) {
+      console.log('nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn', payload)
       state.jwtMsg = payload
     }
   },

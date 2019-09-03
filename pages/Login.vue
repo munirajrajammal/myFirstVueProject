@@ -18,7 +18,7 @@
               />
               <br>
               <b-input
-                id="password"
+                id="passwordData"
                 type="password"
                 minlength="3"
                 maxlength="12"
@@ -28,6 +28,10 @@
                 required
                 />
               <br/>
+              <input type="checkbox" @click="checkBoxData" id="showPass"/>
+              <br>
+              <label>Show password</label>
+              <br>
               <b-toast id="example-toast" title="BootstrapVue" static no-auto-hide>
                 {{ $store.state.loginMsg.success }}
               </b-toast>
@@ -51,62 +55,11 @@
       </div>
     </div>
   </b-row>
-  <!-- <b-row class="common">
-    <div class="firstdiv">
-      <b-row class="d-flex justify-content-center firstRow">
-        
-        <form @submit.prevent="loginInsert">
-            <b-p> Login </b-p>
-            <br>
-            <br>
-            <b-input
-              id="email"
-              type="email"
-              v-model="loginRegister.email"
-              name="email"
-              placeholder="Enter email"
-              required
-            />
-            <br>
-            <b-input
-              id="password"
-              type="password"
-              minlength="3"
-              maxlength="12"
-              v-model="loginRegister.password"
-              name="password"
-              placeholder="Enter password"
-              required
-              />
-            <br/>
-            <b-toast id="example-toast" title="BootstrapVue" static no-auto-hide>
-              {{ $store.state.loginMsg.success }}
-            </b-toast>
-            
-            <button
-            class="rounded-pill btn btn-primary"
-            @click="$bvToast.show('example-toast')"
-            >login</button>
-            <br>
-            <a href="http://localhost:3000/ForgotPass">forgot your password</a>
-          </form>
-      </b-row>
-      <b-row class="d-flex justify-content-center secondRow" >
-        <div>
-          <b-p id="newAccount">Are you new account</b-p>
-          <br>
-          <b-button pill variant="primary" @click="registerForm">Create on Account</b-button>
-        </div>     
-      </b-row>
-    </div>
-  </b-row> -->
 </template>
 
 <script>
 import store from '../store'
-// import Vue from 'vue'
 import { mapState } from 'vuex'
-// import axios from 'axios'
 export default {
   store,
   data () {
@@ -122,10 +75,18 @@ export default {
       console.log('the data of registerLogin ========== ', this.loginRegister)
       this.$store.dispatch('loginForm', { data: this.loginRegister, routerData: this.$router })
       console.log('--------- ****', this.$store.state.loginMsg.success)
-      // this.msgText = this.$store.state.loginMsg
     },
     registerForm () {
       this.$router.push('/')
+    },
+    checkBoxData () {
+      var checkData = document.querySelector('#passwordData')
+      if (checkData.getAttribute('type') === 'password') {
+        checkData.setAttribute('type', 'text')
+      } else {
+        checkData.setAttribute('type', 'password')
+      }
+      this.passwordFaild = this.passwordFaild === 'password' ? 'password' : 'text'
     },
     computed: {
       ...mapState({message: 'loginMsg'})
@@ -136,12 +97,12 @@ export default {
   
 <style  lang="scss" scoped>
 .background {
-  margin: 0px;
-  height: 100vh;
+  margin: 0px 0px;
+  height: 100%;
   font: initial;
   .firstMargin {
     font: initial;
-    margin: 6% 0%;
+    margin: 3% 0%;
     .loginForm {
       border-radius: 20px;
       margin: 0px 42px;
@@ -157,16 +118,21 @@ export default {
           margin-top: 31px;
       }
       ::placeholder {
-        padding-left: 6px;
+        padding-left: 0px;
       }
+    
       input {
         outline: none;
+        padding-left: 25px;
         border:solid 1px #ccc;
-        // border: none; 
         border-radius: 50px;
         width: 100%;
         height: 50px;
         font-size: 25px;
+      }
+      #showPass {
+        margin-top: 0px;
+        width: 20px !important;
       }
       button {
         margin-bottom: 25px;
@@ -174,10 +140,10 @@ export default {
         font-size: larger;
         width: 100%;
         font-size: 30px;
-        background: linear-gradient(90deg, #514cb2 50%  , #6f4eb3 100%);
+        background-image: linear-gradient(to right, #e1010b, #dc4d00, #d47000, #c98d00, #bea603);
       }
       a {
-        color: #007bff;
+        color: #c09f24;
         font-size: 30px;
       }
     }
@@ -187,14 +153,14 @@ export default {
       padding: 25px 60px 15px 60px;
       border-bottom-left-radius: 25px;
       border-bottom-right-radius: 25px;
-      background: linear-gradient(90deg, #514cb2 50%  , #6f4eb3 100%);     
+      background-image: linear-gradient(to right, #e1010b, #dc4d00, #d47000, #c98d00, #bea603);
       line-height: 35px;
       b-p {
         font-size: 30px;
         color: #ffffff;
       }
       button {
-        color: #694db3;
+        color: #e23d25;
         font-size: 30px;
         background-color: #ffffff !important;
         margin-top: 30px;
@@ -207,79 +173,5 @@ export default {
     }
   }
 }
-
-//   $Color: rgb(120, 78, 199);
-// body {
-//   background-color: white;
-// }
-// .common {
-//   background-color: aqua;
-//   margin: 5% 10%;
-//   display: flex;
-//   justify-content: center;
-//   .firstdiv {
-//     // float: left;
-//     // background-color: $Color;
-//     // display: flex;
-//     // align-items: center;
-//     margin: 2% 10%;
-//     input {
-//       border: none; 
-//       border-radius: 50px;
-//       width: 100%;
-//       height: 40px;
-//       }
-//     .firstRow {
-//       align-items: center;
-//       background-color: purple;
-//       b-p {
-//         font-size: 50px;
-//       }
-//       button{
-//         font-size: 18px;
-//         text-transform: capitalize;
-//       }
-//       a{
-//         font-size: 18px;
-//       }
-//     }
-//     .secondRow {
-//       margin: 0px 60px;
-//       background-color: yellowgreen;
-//       b-p{
-//         font-size: 20px;
-//       }
-//     }   
-//   }
-// }
-
-
-
-
-
-
-
-// div{
-//   margin: 10px 10px;
-//   font-size: 30px;
-// }
-// .formLogin{
-//   display: flex;
-//   justify-content: center;
-//   font-size: 30px;
-//   margin-top: 50px;
-//   b-p{
-//     font-size: 40px;
-//     color: $Color;
-//     font: bold;
-//   }
-//   b-label{
-//     color: green;
-//   }
-//   b-input{
-//   }
-  
-  
-// }
 
 </style>
