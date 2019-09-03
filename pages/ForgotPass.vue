@@ -15,16 +15,18 @@
             />
             <br/>
 
-            <b-toast id="example-toast" title="BootstrapVue" static no-auto-hide>
-              {{ passMsg }}
-            </b-toast>
-
             <button id="butt"
               class="rounded-pill btn btn-primary"
               @click="$bvToast.show('example-toast')"
               name="login">
               login
             </button>
+            <br>
+            <p v-if="passMsg === 'SuccessTokenSuccesss'">Email successful</p>
+            <p v-if="passMsg === 'notSuccess'">Email faild</p>
+            <br>
+            <img v-if="passMsg === 'SuccessTokenSuccesss'" src="../assets/img/89edc2890c3d14a4ed3bbaab9be06a28.gif">
+            <img v-if="passMsg === 'notSuccess'" src="../assets/img/279afb08a410c0895ed811cfee29ded2.gif">
           </form>
         </div>
     </div>
@@ -76,6 +78,12 @@
       b-p {
         font-size: 70px;
         color: #9b9d9e;
+      }
+      p {
+        font-size: 30px;
+      }
+      img {
+        width: 120px;
       }
       ::placeholder{
         padding-left: 0px;

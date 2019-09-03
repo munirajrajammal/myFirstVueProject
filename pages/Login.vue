@@ -32,14 +32,13 @@
               <br>
               <label>Show password</label>
               <br>
-              <b-toast id="example-toast" title="BootstrapVue" static no-auto-hide>
-                {{ $store.state.loginMsg.success }}
-              </b-toast>
               
               <button
               class="rounded-pill btn btn-primary"
               @click="$bvToast.show('example-toast')"
               >login</button>
+              <p v-if="$store.state.loginMsg.success === 'Login Faild'">login faild</p>
+              <img v-if="$store.state.loginMsg.success === 'Login Faild'" src="../assets/img/279afb08a410c0895ed811cfee29ded2.gif">
               <br>
               <a href="http://localhost:3000/ForgotPass">forgot your password</a>
             </form>
@@ -102,7 +101,7 @@ export default {
   font: initial;
   .firstMargin {
     font: initial;
-    margin: 3% 0%;
+    margin: 1% 0%;
     .loginForm {
       border-radius: 20px;
       margin: 0px 42px;
@@ -120,7 +119,16 @@ export default {
       ::placeholder {
         padding-left: 0px;
       }
-    
+      label {
+        font-size: 23px;
+        color: #d66224;
+      }
+      img {
+        width: 100px;
+      }
+      p {
+        font-size: 30px;
+      }
       input {
         outline: none;
         padding-left: 25px;

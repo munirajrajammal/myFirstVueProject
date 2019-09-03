@@ -8,6 +8,7 @@
                 class="rounded-pill btn btn-primary"
                 >logout</button>
                 <h1>Welcome</h1>
+                <img src="../assets/img/we.gif">
             </div>
             <div v-else>
               <p>Do not use this page</p>

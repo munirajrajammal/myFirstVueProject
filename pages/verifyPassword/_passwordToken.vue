@@ -18,9 +18,7 @@
             <br/>
             
             <input type="checkbox" @click="checkBoxPass" id="showPass">
-            <b-toast id="example-toast" title="BootstrapVue" static no-auto-hide>
-              {{ passMsg }}
-            </b-toast>
+            <br>
 
             <button id="butt" 
               class="rounded-pill btn btn-primary"
@@ -28,6 +26,8 @@
               name="login">
               login
             </button>
+            <br>
+            <img src="../../assets/img/9f0f5cabdcab69fd43af9e51d55c9745.gif">
           </form>
         </div>
     </div>
